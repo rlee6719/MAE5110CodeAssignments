@@ -18,6 +18,8 @@ params = {
 # some set-up
 initial_state = np.array([np.pi / 4, 0.0])
 
+#TIME SWEEP
+
 """
 sim_time = 5.0
 
@@ -141,6 +143,7 @@ print(
 )
 """
 
+#PLOTTING
 
 timestep = 1e-5
 sim_time = 5.0
