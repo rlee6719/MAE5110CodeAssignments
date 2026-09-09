@@ -52,7 +52,7 @@ $$
 
 so I also expected the angular velocity to drop by about half at each impact. This is visible in the velocity plot.
 
-![Angular velocity vs time](figures/assignment_1/rimlesswheelangelvovtime.png)
+![Angular velocity vs time](figures/assignment_1/rimlesswheelangvelovtime.png)
 
 ## Region of attraction
 
