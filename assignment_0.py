@@ -20,7 +20,6 @@ initial_state = np.array([np.pi / 4, 0.0])
 
 #TIME SWEEP
 
-"""
 sim_time = 5.0
 
 def simulate(timestep, integrator):
@@ -44,24 +43,23 @@ def simulate(timestep, integrator):
 
 # Coarse timestep sweep
 timesteps = [
-    0.10,
-    0.11,
-    0.12,
-    0.13,
-    0.14,
-    0.15,
-    0.16,
-    0.17,
-    0.18,
-    0.19,
-    0.20,
+    1e-5,
+    2e-5,
+    3e-5,
+    4e-5,
+    5e-5,
+    6e-5,
+    7e-5,
+    8e-5,
+    9e-5,
+    1e-4,
 ]
 
-max_acceptable_error = 0.01
+max_acceptable_error = 0.002
 largest_stable_timestep = None
 
 for timestep in timesteps:
-    time_traj, state_traj = simulate(timestep, rk4)
+    time_traj, state_traj = simulate(timestep, explicit_euler)
 
     kinetic_energy, potential_energy = model.calculate_energy(
         state_traj, params
@@ -70,12 +68,12 @@ for timestep in timesteps:
     total_energy = kinetic_energy + potential_energy
 
     max_energy_error = np.max(
-        np.abs(total_energy - total_energy[0])
-    ) / np.abs(total_energy[0])
+    np.abs(total_energy - total_energy[0])
+    )
 
     print(
-        f"dt = {timestep:.5f} s, "
-        f"max energy error = {100 * max_energy_error:.2f}%"
+    f"dt = {timestep:.2e} s, "
+    f"max energy error = {max_energy_error * 1000:.3f} mJ"
     )
 
     if max_energy_error < max_acceptable_error:
@@ -141,7 +139,7 @@ print(
     f"RK4,   dt = {rk4_max_dt}: "
     f"{rk4_best_time:.6f} s"
 )
-"""
+
 
 #PLOTTING
 
