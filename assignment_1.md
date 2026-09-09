@@ -14,31 +14,31 @@ For the baseline case I used a 1 m spoke length, 6 spokes, a 15 degree slope, an
 
 I first checked the upright equilibrium at
 
-\[
+$$
 \theta = 0,\qquad \dot{\theta}=0
-\]
+$$
 
 Since the angular acceleration is zero here, I expected the wheel to stay still. The simulation did this.
 
 I then released the wheel slightly downhill of vertical at
 
-\[
+$$
 \theta_0 = 0.1,\qquad \dot{\theta}_0 = 0
-\]
+$$
 
 and expected it to accelerate downhill. This also happened as expected.
 
 For 6 spokes, the half-spoke angle is 30 degrees. With a 15 degree slope, I expected forward contact at
 
-\[
+$$
 \theta^- = 15^\circ + 30^\circ = 45^\circ = 0.785\text{ rad}
-\]
+$$
 
 and the new stance angle after impact to be
 
-\[
+$$
 \theta^+ = 15^\circ - 30^\circ = -15^\circ = -0.262\text{ rad}
-\]
+$$
 
 The angle plot shows the wheel repeatedly reaching about 0.785 rad and resetting to about -0.262 rad.
 
@@ -46,9 +46,9 @@ The angle plot shows the wheel repeatedly reaching about 0.785 rad and resetting
 
 For 6 spokes, the impact rule multiplies angular velocity by
 
-\[
+$$
 \cos(60^\circ)=0.5
-\]
+$$
 
 so I also expected the angular velocity to drop by about half at each impact. This is visible in the velocity plot.
 
@@ -76,7 +76,7 @@ For the baseline case:
 
 The resting states are cases where the wheel rocks between spokes while losing energy through impacts until the velocity becomes very small.
 
-To speed up the RoA calculation I used a timestep of 0.005 s and refined the exact impact time using bisection. I compared this against a timestep of 0.0025 s on the same 41 x 41 grid and got the same rolling and resting fractions to the shown precision, so I used 0.005 s for the parameter sweeps.
+To speed up the RoA calculation I used a timestep of 0.005 s and refined the impact time using bisection. I compared this against a timestep of 0.0025 s on the same 41 x 41 grid and got the same rolling and resting fractions to the shown precision, so I used 0.005 s for the parameter sweeps.
 
 ## Return map and Floquet multiplier
 
@@ -86,23 +86,23 @@ I used the post-impact state as the Poincare section. Since the angle is the sam
 
 The fixed point is where the return map crosses the identity line. I found
 
-\[
+$$
 \dot{\theta}^* = 1.3010\text{ rad/s}
-\]
+$$
 
 This corresponds to the steady rolling limit cycle.
 
 I estimated the local slope of the return map by perturbing the velocity slightly on both sides of the fixed point. This gave a Floquet multiplier of
 
-\[
+$$
 \lambda = 0.2499
-\]
+$$
 
 Since
 
-\[
+$$
 |\lambda|<1
-\]
+$$
 
 the rolling limit cycle is locally stable. A value near 0.25 means a small velocity error shrinks to about one quarter of its previous value each step.
 
@@ -114,8 +114,6 @@ I varied the slope from 5 to 25 degrees while keeping 6 spokes.
 
 At 10 degrees and below, none of the sampled initial conditions reached sustained rolling. Rolling appeared by 12.5 degrees and its region of attraction increased as the slope increased.
 
-Some results were:
-
 | Slope | Rolling fraction | Fixed-point velocity |
 | --- | ---: | ---: |
 | 12.5 deg | 0.512 | 1.190 rad/s |
@@ -123,7 +121,7 @@ Some results were:
 | 20 deg | 0.806 | 1.496 rad/s |
 | 25 deg | 0.933 | 1.663 rad/s |
 
-A steeper slope therefore made the rolling gait easier to reach and also increased the steady rolling speed.
+A steeper slope made the rolling gait easier to reach and also increased the steady rolling speed.
 
 ![Slope effect on Floquet multiplier](figures/assignment_1/rimlessfloquent.png)
 
